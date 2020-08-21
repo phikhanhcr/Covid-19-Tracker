@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { FormControl, MenuItem, Button, Select } from '@material-ui/core'
+import { FormControl, MenuItem, Button, Select, Card } from '@material-ui/core'
 import './App.css';
+import Table from './components/Table'
 import 'leaflet/dist/leaflet.css';
 import InfoBox from './components/InfoBox';
 import Map from './components/Map';
+import LineGrap from './components/LineGrap';
 
 
 function App() {
@@ -14,6 +16,7 @@ function App() {
   const [zoom, setZoom] = useState(3);
   const [mapCountries, setMapCountries] = useState([]);
   const [casesType, setColorType] = useState('cases');
+const [tableData, setTableData] = useState([])
   // fetch data from worldwide
   useEffect(() => {
     const getCountryInfo = async () => {
@@ -39,7 +42,7 @@ function App() {
           }))
           setCountries(allCountry)
           setMapCountries(data)
-
+          setTableData(data)
         })
         .catch(err => {
           console.log(err.message)
@@ -103,7 +106,7 @@ function App() {
           <InfoBox
             active={casesType === "recovered"}
             onClick={(e) => setColorType('recovered')}
-            title="Recoveries"
+            title="Recovered Case"
             cases={countryInfo.todayRecovered}
             totalCase={countryInfo.recovered} />
           <InfoBox
@@ -118,9 +121,14 @@ function App() {
         <Map center={center} casesType={casesType} countries={mapCountries} zoom={zoom} />
       </div>
 
-      <div className="app__right">
-        <h1>I am a bad boy</h1>
-      </div>
+      <Card className="app__right">
+        <h3>Live Cases by Country</h3>
+        <Table countries={tableData}>
+        
+        </Table>
+        <h3 style={{margin:"10px"}}>WorldWide Chart</h3>
+        <LineGrap />
+      </Card>
     </div>
   );
 }

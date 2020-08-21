@@ -5,7 +5,7 @@ import './Infor.css'
 function InfoBox({ title, cases, totalCase, active, isRed, ...props }) {
 console.log(isRed)
   return (
-      <Card className={`info-box ${active && 'infoBox--selected'} ${isRed && 'infoBox--red'} `} onClick={props.onClick}>
+      <Card className={`info-box ${isRed && 'infoBox--red'} `} onClick={props.onClick}>
         <CardContent>
           <Typography className="title" color="textPrimary">{title}</Typography>
           <h3 className="today">+ {cases}</h3>

@@ -6,7 +6,7 @@
 .info-box:not(:last-child) {
   margin-right: 10px;
 }
-.infoBox--selected {
+.info-box:nth-child(even) {
   border-top : 10px solid #7dd71d;
 }
 

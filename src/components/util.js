@@ -16,6 +16,14 @@ const casesTypeColors = {
     multiplier: 2000
   }
 }
+// sorting data putting it in the table 
+export const sortingData = (data) => {
+  return data.sort((a, b) => b.cases - a.cases); 
+}
+
+
+
+// draw circle on map
 export const showDataOnMap = (data, casesType ) => (
   data.map(country => (
     <Circle

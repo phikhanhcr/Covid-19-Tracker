@@ -24,7 +24,23 @@ body {
 }
 .app__right {
   flex : 0.2;
+  padding: 5px;
 }
+
+.table {
+  height: 400px;
+  overflow: scroll;
+  margin-top : 20px;
+}
+.table tr:nth-of-type(odd) {
+  background-color: #eee;
+}
+.table tr {
+  display: flex;
+  justify-content: space-between;
+  padding : 0.5rem;
+}
+
 @media (max-width : 900px) {
   .App {
     display: flex;
@@ -47,3 +63,6 @@ body {
   }
 
 } 
+canvas {
+  height: 250px;
+}
