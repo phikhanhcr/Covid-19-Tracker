@@ -1,0 +1,15 @@
+.info-box {
+  margin-top : 10px;
+  flex : 1;
+  cursor: pointer;
+}
+.info-box:not(:last-child) {
+  margin-right: 10px;
+}
+.infoBox--selected {
+  border-top : 10px solid #7dd71d;
+}
+
+.infoBox--red {
+  border-top : 10px solid #fd4443;
+}

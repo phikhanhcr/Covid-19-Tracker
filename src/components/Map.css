@@ -1,0 +1,31 @@
+#mapid {
+  height: 500px;
+  background-color: #fff;
+  border-radius: 10px;
+  margin: 16px 0px;
+  padding : 1rem;
+  box-shadow: 0 0 8px -4px rgba(0, 0, 0, 0.4);
+}
+#mapid .leaflet-container {
+  height: 100%; 
+  font-size: 13px;
+}
+.info-container {
+  width  : 150px;
+}
+.flag-country img {
+  width : 100%;
+  border-radius: 5px;
+}
+.flag-country {
+  height: 80px;
+  width : 100%;
+  background-size: cover;
+}
+.nameCountry {
+  font-size: 20px;
+  font-weight: 700;
+}
+.info-container span {
+  font-weight: 800px;
+}
