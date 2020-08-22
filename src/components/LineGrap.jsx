@@ -3,7 +3,7 @@ import { Line } from 'react-chartjs-2'
 import { tooltip } from 'leaflet';
 import numeral from 'numeral'
 
-function LineGrap(props) {
+function LineGrap({casesType}) {
   const options = {
     legend: {
       display: false
@@ -47,7 +47,7 @@ function LineGrap(props) {
     }
   }
   const [data, setData] = useState([]);
-  const convertData = (data, caseType = "cases") => {
+  const convertData = (data, casesType) => {
     let chartData = [];
     let lastDataPoint;
     for (let date in data.cases) {
@@ -55,12 +55,13 @@ function LineGrap(props) {
         // compare 2 consecutive days
         const newDataPoint = {
           x: date,
-          y: data[caseType][date] - lastDataPoint
+          y: data[casesType][date] - lastDataPoint
         }
         chartData.push(newDataPoint)
       }
-      lastDataPoint = data[caseType][date];
+      lastDataPoint = data[casesType][date];
     }
+    
     return chartData;
   }
 
@@ -70,7 +71,7 @@ function LineGrap(props) {
       await fetch('https://disease.sh/v3/covid-19/historical/all?lastdays=120')
         .then(res => res.json())
         .then(data => {
-          let chartData = convertData(data, 'cases')
+          let chartData = convertData(data, casesType)
           setData(chartData);
         })
         .catch(err => {
@@ -78,8 +79,7 @@ function LineGrap(props) {
         })
     }
     fetchData();
-  }, [])
-  console.log(data)
+  }, [casesType])
   return (
     <div>
       {

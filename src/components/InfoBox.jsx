@@ -3,7 +3,6 @@ import React from 'react';
 import { Card, CardContent, Typography } from '@material-ui/core';
 import './Infor.css'
 function InfoBox({ title, cases, totalCase, active, isRed, ...props }) {
-console.log(isRed)
   return (
       <Card className={`info-box ${isRed && 'infoBox--red'} `} onClick={props.onClick}>
         <CardContent>

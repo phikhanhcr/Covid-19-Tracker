@@ -15,7 +15,7 @@ function App() {
   const [center, setMapCenter] = useState({ lat: 34.8746, lng: -40.7946 });
   const [zoom, setZoom] = useState(3);
   const [mapCountries, setMapCountries] = useState([]);
-  const [casesType, setColorType] = useState('cases');
+  const [colorType, setColorType] = useState('cases');
 const [tableData, setTableData] = useState([])
   // fetch data from worldwide
   useEffect(() => {
@@ -98,36 +98,35 @@ const [tableData, setTableData] = useState([])
         <div className="app__boxInfo">
           <InfoBox
             isRed={true}
-            active={casesType === "cases"}
+            active={colorType === "cases"}
             onClick={(e) => setColorType('cases')}
             title="CoronaVirus Cases"
             cases={countryInfo.todayCases}
             totalCase={countryInfo.cases} />
           <InfoBox
-            active={casesType === "recovered"}
+            active={colorType === "recovered"}
             onClick={(e) => setColorType('recovered')}
             title="Recovered Case"
             cases={countryInfo.todayRecovered}
             totalCase={countryInfo.recovered} />
           <InfoBox
             isRed={true}
-            active={casesType === "deaths"}
+            active={colorType === "deaths"}
             onClick={(e) => setColorType('deaths')}
             title="Passed Away"
             cases={countryInfo.todayDeaths} t
             totalCase={countryInfo.deaths} />
 
         </div>
-        <Map center={center} casesType={casesType} countries={mapCountries} zoom={zoom} />
+        <Map center={center} casesType={colorType} countries={mapCountries} zoom={zoom} />
       </div>
 
       <Card className="app__right">
         <h3>Live Cases by Country</h3>
         <Table countries={tableData}>
-        
         </Table>
         <h3 style={{margin:"10px"}}>WorldWide Chart</h3>
-        <LineGrap />
+        <LineGrap casesType={colorType}/>
       </Card>
     </div>
   );
